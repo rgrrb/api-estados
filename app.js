@@ -22,6 +22,8 @@ const PORT =  process.PORT || 8080
 //Instancia na classe do express
 const app = express()
 
+app.use(express.json)
+
 app.use((request, response, next) => {
     response.header('Acess-Control-Allow-Origin', '*')
     response.header('Acess-Control-Allow-Methods', 'GET')
@@ -29,3 +31,5 @@ app.use((request, response, next) => {
     app.use(cors())
     next()
 })
+
+app.get('/v1/estados')
