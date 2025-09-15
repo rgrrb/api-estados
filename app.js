@@ -32,4 +32,4 @@ app.use((request, response, next) => {
     next()
 })
 
-app.get('/v1/estados')
+app.get('/v1/estados', function(request, response){})
