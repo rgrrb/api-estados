@@ -53,6 +53,39 @@ app.get('/v1/estados/:sigla', function(request, response){
     response.json(estados)
 
 })
+app.get('/v1/capital/:sigla', function(request, response){
+    let sigla = request.params.sigla
+
+    let estados = functions.getCapitalBySigla(sigla)
+    response.status(estados.statuscode)
+    response.json(estados)
+
+})
+app.get('/v1/estado/estadoregiao/:regiao', function(request, response){
+    let regiao = request.params.regiao
+
+    let estados = functions.getEstadosByRegiao(regiao)
+    response.status(estados.statuscode)
+    response.json(estados)
+
+})
+app.get('/v1/estado/capital/:pais', function(request, response){
+    let pais = request.params.pais
+
+    let estados = functions.getEstadosIsCapitalByCountry(pais)
+    response.status(estados.statuscode)
+    response.json(estados)
+
+})
+app.get('/v1/estado/cidade/:sigla', function(request, response){
+    let sigla = request.params.sigla
+
+    let estados = functions.getCidadesBySigla(sigla)
+    response.status(estados.statuscode)
+    response.json(estados)
+
+})
+
 
 app.listen(PORT, function(){
     console.log('conectado')

@@ -93,14 +93,15 @@ const getCapitalBySigla = (sigla) => {
     let arrayEstados = listaDeEstados.estados
     let capitalBySigla = arrayEstados.find(estado => estado.sigla === sigla)
 
-    message.uf = capitalBySigla.sigla
-    message.descricao = capitalBySigla.nome
-    message.capital = capitalBySigla.capital
-
-    if (capitalBySigla === sigla)
+    if (capitalBySigla) {
+        message.uf = capitalBySigla.sigla
+        message.descricao = capitalBySigla.nome
+        message.capital = capitalBySigla.capital
         return message
-    else
+    } else {
         return MESSAGE_ERROR
+    }
+
 
 };
 
@@ -147,7 +148,7 @@ const getEstadosIsCapitalByCountry = (pais) => {
         "capitais": []
 
     }
-    if(listaDeEstados.pais === pais){
+    if (listaDeEstados.pais === pais) {
         listaDeEstados.estados.forEach(estado => {
             if (estado.capital_pais) {
                 let info = {
@@ -166,18 +167,18 @@ const getEstadosIsCapitalByCountry = (pais) => {
                 info.regiao = estado.regiao
                 info.capital_pais_ano_inicio = estado.capital_pais.ano_inicio
                 info.capital_pais_ano_termino = estado.capital_pais.ano_fim
-    
+
                 message.capitais.push(info)
-                
+
             }
-            
+
         })
 
         return message
     }
-    
+
     return MESSAGE_ERROR
-    
+
 
 }
 
@@ -196,25 +197,29 @@ const getCidadesBySigla = (sigla) => {
     }
 
     listaDeEstados.estados.forEach(function (estado) {
-        if(estado.sigla === sigla){
+        if (estado.sigla === sigla) {
             message.uf = estado.sigla
             message.descricao = estado.nome
             message.quantidade_cidades = estado.cidades.length
-            estado.cidades.forEach(function(cidade){
+            estado.cidades.forEach(function (cidade) {
                 message.cidades.push(cidade.nome)
             })
         }
+
     })
-    return message
-
+    if (message.uf === sigla)
+        return message
+    else
+        return MESSAGE_ERROR
 }
-
-console.log(getCidadesBySigla("SP"))
 
 module.exports = {
     getAllEstados,
     getEstadoBySigla,
     getCapitalBySigla,
+    getEstadosByRegiao,
+    getEstadosIsCapitalByCountry,
+    getCidadesBySigla
 
 }
 
