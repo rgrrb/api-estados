@@ -1,7 +1,7 @@
 /* *********************************************************************
 * Objetivo: API responsavel em criar endPoints refernte a estados e cidades
 * Data: 29/08/2022  
-* Autor: Marcel
+* Autor: Roger
 *
 * Observações: Instalar dependencias para criar a API
 *      express     - npm install express     --save Instala as dependencias para criar uma API
