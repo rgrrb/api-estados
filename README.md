@@ -1,5 +1,3 @@
-Claro\! Aqui está um arquivo `README.md` completo e bem estruturado, pronto para ser usado em um repositório do GitHub.
-
 -----
 
 # 🏛️ API Estados e Cidades
@@ -232,3 +230,4 @@ Em caso de requisição inválida (ex: sigla inexistente) ou erro interno do ser
   - **Roger Ribeiro de Oliveira**
 
 -----
+
